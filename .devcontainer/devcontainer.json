@@ -1,0 +1,122 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/javascript-node-postgres
+// Update the VARIANT arg in docker-compose.yml to pick a Node.js version
+{
+  "name": "unsplash-gallery",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "workspace",
+  "workspaceFolder": "/workspace",
+
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      "settings": {
+        "bracketPairColorizer.depreciation-notice": false,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "always",
+          "source.organizeImports": "always"
+        },
+        "editor.formatOnSave": true,
+        "editor.largeFileOptimizations": false,
+        "editor.minimap.enabled": false,
+        "eslint.validate": ["javascript"],
+        "explorer.compactFolders": false,
+        "explorer.confirmDragAndDrop": false,
+        "explorer.openEditors.visible": 5,
+        "files.eol": "\n",
+        "javascript.updateImportsOnFileMove.enabled": "always",
+        "npm.enableTouchbar": true,
+        "prettier.configPath": "",
+        "typescript.updateImportsOnFileMove.enabled": "always",
+        "workbench.editor.untitled.hint": "hidden",
+        "workbench.iconTheme": "material-icon-theme",
+        "workbench.startupEditor": "none",
+        "[json]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[jsonc]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[typescript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[typescriptreact]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[html]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[javascript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[less]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[yaml]": {
+          "editor.defaultFormatter": "redhat.vscode-yaml"
+        },
+        "[css]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[dockercompose]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "yaml.customTags": [
+          "!And",
+          "!And sequence",
+          "!If",
+          "!If sequence",
+          "!Not",
+          "!Not sequence",
+          "!Equals",
+          "!Equals sequence",
+          "!Or",
+          "!Or sequence",
+          "!FindInMap",
+          "!FindInMap sequence",
+          "!Base64",
+          "!Join",
+          "!Join sequence",
+          "!Cidr",
+          "!Ref",
+          "!Sub",
+          "!Sub sequence",
+          "!GetAtt",
+          "!GetAZs",
+          "!ImportValue",
+          "!ImportValue sequence",
+          "!Select",
+          "!Select sequence",
+          "!Split",
+          "!Split sequence"
+        ]
+      },
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "bradlc.vscode-tailwindcss",
+        "dbaeumer.vscode-eslint",
+        "eamodio.gitlens",
+        "eliostruyf.vscode-typescript-exportallmodules",
+        "esbenp.prettier-vscode",
+        "PKief.material-icon-theme",
+        "redhat.vscode-yaml"
+      ]
+    }
+  },
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // This can be used to network with other containers or with the host.
+  "forwardPorts": [3000],
+
+  "initializeCommand": "ssh-add",
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "npm ci",
+
+  // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "root",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": { "version": "latest" }
+  }
+}
