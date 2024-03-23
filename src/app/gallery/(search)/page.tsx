@@ -17,10 +17,13 @@ export default function Gallery() {
           data.map((photo) => (
             <GalleryItem
               key={photo.id}
+              id={photo.id}
               image={photo.urls.small}
               description={photo.description}
               authorName={photo.user.name}
+              authorHandle={photo.user.username}
               authorProfile={photo.user.links.html}
+              authorImage={photo.user.profile_image.medium}
             />
           ))
         )}

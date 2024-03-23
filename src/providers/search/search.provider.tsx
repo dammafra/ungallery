@@ -6,7 +6,6 @@ export const SearchProvider = ({ children }: PropsWithChildren) => {
   // TODO: model/adapter
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
   const [[query, page], setRequest] = useState<[string, number]>(["", 1]);
   const [perPage, setPerPage] = useState(12);
@@ -16,7 +15,7 @@ export const SearchProvider = ({ children }: PropsWithChildren) => {
     if (!query) {
       setData([]);
       setLoading(false);
-      setError("");
+      setTotalPages(1);
       return;
     }
 
@@ -48,7 +47,6 @@ export const SearchProvider = ({ children }: PropsWithChildren) => {
   const contextValue: SearchContext = {
     data,
     loading,
-    error,
 
     query,
     setQuery,

@@ -4,7 +4,7 @@ import { Input } from "@nextui-org/input";
 import { useSearch } from "@providers/search/use-search";
 import { generate } from "random-words";
 import { useEffect, useState } from "react";
-import { CiSearch } from "react-icons/ci";
+import { MdSearch } from "react-icons/md";
 import { useDebounce } from "use-debounce";
 
 export const SearchBar = () => {
@@ -27,7 +27,7 @@ export const SearchBar = () => {
       labelPlacement="outside"
       placeholder="Search..."
       startContent={
-        <CiSearch className="text-base text-default-400 pointer-events-none flex-shrink-0" />
+        <MdSearch className="text-base text-default-400 pointer-events-none flex-shrink-0" />
       }
       type="search"
       value={value}

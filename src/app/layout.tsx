@@ -1,5 +1,4 @@
 import "@/styles/globals.css";
-import { Navbar } from "@components/navbar";
 import { Providers } from "@providers";
 import { fontSans } from "@styles/fonts";
 import clsx from "clsx";
@@ -31,15 +30,12 @@ export default function Layout({ children }: PropsWithChildren) {
       <head />
       <body
         className={clsx(
-          "min-h-screen bg-background font-sans antialiased",
+          "h-screen bg-background text-foreground font-sans antialiased",
           fontSans.variable
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-col">
-            <Navbar />
-            <main className="container mx-auto max-w-7xl p-6">{children}</main>
-          </div>
+          {children}
         </Providers>
       </body>
     </html>

@@ -5,7 +5,6 @@ import { createContext } from "react";
 export interface SearchContext {
   data: any[];
   loading: boolean;
-  error: string;
 
   query: string;
   setQuery(query: string): void;

@@ -10,6 +10,12 @@ class UnsplashService {
         })
     ).then((res) => res.json());
   }
+
+  getPhoto(id: string) {
+    return fetch(
+      "/api/unsplash-proxy/photos?" + new URLSearchParams({ id })
+    ).then((res) => res.json());
+  }
 }
 
 export const unsplashService = new UnsplashService();
