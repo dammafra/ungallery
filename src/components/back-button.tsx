@@ -2,14 +2,14 @@
 
 import { Button } from "@nextui-org/button";
 import { useRouter } from "next/navigation";
-import { MdChevronLeft } from "react-icons/md";
+import { FaChevronLeft } from "react-icons/fa6";
 
 export const BackButton = () => {
   const { back } = useRouter();
 
   return (
     <Button isIconOnly variant="faded" aria-label="back" onPress={back}>
-      <MdChevronLeft size={22} />
+      <FaChevronLeft size={14} />
     </Button>
   );
 };

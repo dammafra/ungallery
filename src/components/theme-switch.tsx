@@ -3,7 +3,7 @@
 import { Switch } from "@nextui-org/switch";
 import { useIsSSR } from "@react-aria/ssr";
 import { useTheme } from "next-themes";
-import { MdDarkMode, MdLightMode } from "react-icons/md";
+import { FaMoon, FaSun } from "react-icons/fa6";
 
 export const ThemeSwitch = ({}) => {
   const { theme, setTheme } = useTheme();
@@ -21,9 +21,9 @@ export const ThemeSwitch = ({}) => {
       }
       thumbIcon={({ isSelected, className }) =>
         isSelected ? (
-          <MdDarkMode className={className} />
+          <FaMoon className={className} />
         ) : (
-          <MdLightMode className={className} />
+          <FaSun className={className} />
         )
       }
     >

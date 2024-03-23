@@ -6,7 +6,7 @@ import { useSearch } from "@providers/search/use-search";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { generate } from "random-words";
 import { useEffect, useState } from "react";
-import { MdSearch, MdShuffle } from "react-icons/md";
+import { FaMagnifyingGlass, FaShuffle } from "react-icons/fa6";
 import { useDebounce } from "use-debounce";
 
 export const SearchBar = () => {
@@ -36,8 +36,8 @@ export const SearchBar = () => {
       labelPlacement="outside"
       placeholder="Search..."
       startContent={
-        <MdSearch
-          size={22}
+        <FaMagnifyingGlass
+          size={14}
           className="text-default-400 pointer-events-none flex-shrink-0"
         />
       }
@@ -47,8 +47,8 @@ export const SearchBar = () => {
           variant="flat"
           isIconOnly
           startContent={
-            <MdShuffle
-              size={22}
+            <FaShuffle
+              size={14}
               className="text-default-foreground flex-shrink-0"
             />
           }
