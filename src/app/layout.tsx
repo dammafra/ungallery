@@ -1,15 +1,15 @@
-import { Navbar } from "@/components/navbar";
-import { fontSans } from "@/styles/fonts";
 import "@/styles/globals.css";
+import { Navbar } from "@components/navbar";
+import { Providers } from "@providers";
+import { fontSans } from "@styles/fonts";
 import clsx from "clsx";
 import { Metadata, Viewport } from "next";
 import { PropsWithChildren } from "react";
-import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: {
-    default: "Unsplash Gallery",
-    template: `%s - Unsplash Gallery`,
+    default: "UnGallery",
+    template: `%s - UnGallery`,
   },
   icons: {
     icon: "/favicon.ico",
@@ -25,7 +25,7 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({ children }: PropsWithChildren) {
+export default function Layout({ children }: PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -36,11 +36,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-col h-screen">
+          <div className="relative flex flex-col">
             <Navbar />
-            <main className="container mx-auto max-w-7xl p-6 flex-grow">
-              {children}
-            </main>
+            <main className="container mx-auto max-w-7xl p-6">{children}</main>
           </div>
         </Providers>
       </body>

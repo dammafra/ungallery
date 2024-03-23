@@ -1,7 +1,8 @@
-import { NavbarContent, Navbar as NextUINavbar } from "@nextui-org/navbar";
+"use client";
 
-import { ThemeSwitch } from "@/components/theme-switch";
+import { NavbarContent, Navbar as NextUINavbar } from "@nextui-org/navbar";
 import { SearchBar } from "./search-bar";
+import { ThemeSwitch } from "./theme-switch";
 
 export const Navbar = () => {
   return (

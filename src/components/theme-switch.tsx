@@ -6,8 +6,7 @@ import { VisuallyHidden } from "@react-aria/visually-hidden";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
 import { FC } from "react";
-
-import { MoonFilledIcon, SunFilledIcon } from "@/components/icons";
+import { CiDark, CiLight } from "react-icons/ci";
 
 export interface ThemeSwitchProps {
   className?: string;
@@ -72,11 +71,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           ),
         })}
       >
-        {!isSelected || isSSR ? (
-          <SunFilledIcon size={22} />
-        ) : (
-          <MoonFilledIcon size={22} />
-        )}
+        {!isSelected || isSSR ? <CiLight size={22} /> : <CiDark size={22} />}
       </div>
     </Component>
   );

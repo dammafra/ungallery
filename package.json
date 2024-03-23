@@ -11,10 +11,13 @@
   "dependencies": {
     "@nextui-org/button": "2.0.26",
     "@nextui-org/code": "2.0.24",
+    "@nextui-org/image": "^2.0.24",
     "@nextui-org/input": "2.1.16",
     "@nextui-org/kbd": "2.0.25",
     "@nextui-org/link": "2.0.26",
     "@nextui-org/navbar": "2.0.27",
+    "@nextui-org/pagination": "^2.0.27",
+    "@nextui-org/skeleton": "^2.0.24",
     "@nextui-org/snippet": "2.0.30",
     "@nextui-org/switch": "2.0.25",
     "@nextui-org/system": "2.0.15",
@@ -33,10 +36,14 @@
     "next": "14.0.2",
     "next-themes": "^0.2.1",
     "postcss": "8.4.31",
+    "random-words": "^2.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^5.0.1",
     "tailwind-variants": "^0.1.18",
     "tailwindcss": "3.3.5",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "unsplash-js": "^7.0.19",
+    "use-debounce": "^10.0.0"
   }
 }
