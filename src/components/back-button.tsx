@@ -9,7 +9,7 @@ export const BackButton = () => {
 
   return (
     <Button isIconOnly variant="faded" aria-label="back" onPress={back}>
-      <FaChevronLeft size={14} />
+      <FaChevronLeft size={18} />
     </Button>
   );
 };

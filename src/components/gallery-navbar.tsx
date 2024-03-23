@@ -3,8 +3,8 @@ import {
   NavbarItem,
   Navbar as NextUINavbar,
 } from "@nextui-org/navbar";
-import { AuthMenu } from "./auth-menu";
 import { SearchBar } from "./search-bar";
+import { UserMenu } from "./user-menu";
 
 export const GalleryNavbar = () => {
   return (
@@ -17,7 +17,7 @@ export const GalleryNavbar = () => {
         </NavbarItem>
 
         <NavbarItem>
-          <AuthMenu />
+          <UserMenu />
         </NavbarItem>
       </NavbarContent>
     </NextUINavbar>

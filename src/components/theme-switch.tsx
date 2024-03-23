@@ -11,10 +11,12 @@ export const ThemeSwitch = ({}) => {
 
   return (
     <Switch
-      id="SWWWW"
       size="sm"
       color="default"
       className="flex-row-reverse justify-between max-w-full w-full"
+      classNames={{
+        wrapper: "m-0",
+      }}
       defaultSelected={theme === "dark" || isSSR}
       onChange={() =>
         theme === "light" ? setTheme("dark") : setTheme("light")

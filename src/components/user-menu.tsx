@@ -6,15 +6,17 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@nextui-org/dropdown";
+import { Chip } from "@nextui-org/react";
 import { User } from "@nextui-org/user";
 import { useAuth } from "@providers/auth/use-auth";
 import { authService } from "@services/auth.service";
 import clsx from "clsx";
+import { FaRightFromBracket } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { ThemeSwitch } from "./theme-switch";
 
-export const AuthMenu = () => {
-  const { user, setUser } = useAuth();
+export const UserMenu = () => {
+  const { user, setUser, favourites } = useAuth();
 
   return (
     <Dropdown placement="bottom-end">
@@ -62,6 +64,7 @@ export const AuthMenu = () => {
 
         <DropdownItem
           className={clsx(!!user ? "flex" : "hidden")}
+          endContent={<Chip>{favourites.length}</Chip>}
           // TODO:
           href="#"
         >
@@ -75,6 +78,9 @@ export const AuthMenu = () => {
         <DropdownItem
           className={clsx(!!user ? "flex" : "hidden")}
           onPress={() => authService.signOut().then(setUser)}
+          endContent={
+            <FaRightFromBracket className="text-default-foreground" size={14} />
+          }
         >
           Logout
         </DropdownItem>
