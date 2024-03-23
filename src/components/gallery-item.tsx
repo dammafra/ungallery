@@ -1,29 +1,34 @@
-import { Card, CardFooter } from "@nextui-org/card";
+import { Card, CardFooter, CardHeader } from "@nextui-org/card";
 import { Image } from "@nextui-org/image";
-import Link from "next/link";
+import { Link } from "@nextui-org/link";
 import { Credits, CreditsProps } from "./credits";
+import { FavouriteButton } from "./favourite-button";
 
 export interface GalleryItemProps extends CreditsProps {
   id: string;
   image: string;
-  description: string;
+  altDescription: string;
 }
 
 export const GalleryItem = ({
   id,
   image,
-  description,
+  altDescription,
   ...props
 }: GalleryItemProps) => {
   return (
     <div className="group relative">
-      <Card isPressable isFooterBlurred className="w-80 h-80">
+      <Card isFooterBlurred className="w-80 h-80">
+        <CardHeader className="absolute top-1 z-20 justify-end">
+          <FavouriteButton photoId={id} />
+        </CardHeader>
+
         <Link href={`/gallery/${id}`} className="h-full w-full">
           <Image
             removeWrapper
             className="object-cover h-full w-full"
             isZoomed
-            alt={description}
+            alt={altDescription}
             src={image}
           />
         </Link>

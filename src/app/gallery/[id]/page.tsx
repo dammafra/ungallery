@@ -19,10 +19,11 @@ export default function Detail({ params }: { params: DetailParams }) {
       <DetailImage
         image={data.urls.full}
         imageBlur={data.urls.thumb}
-        description={data.description}
+        altDescription={data.alt_description}
       />
 
       <DetailSidebar
+        id={data.id}
         authorName={data.user.name}
         authorHandle={data.user.username}
         authorProfile={data.user.links.html}

@@ -1,14 +1,14 @@
 "use client";
 
-import { Avatar } from "@nextui-org/avatar";
 import {
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
 } from "@nextui-org/dropdown";
+import { User } from "@nextui-org/user";
 import { useAuth } from "@providers/auth/use-auth";
-import { firebaseService } from "@services/firebase.service";
+import { authService } from "@services/auth.service";
 import clsx from "clsx";
 import { FcGoogle } from "react-icons/fc";
 import { ThemeSwitch } from "./theme-switch";
@@ -19,20 +19,30 @@ export const AuthMenu = () => {
   return (
     <Dropdown placement="bottom-end">
       <DropdownTrigger>
-        <Avatar
-          as="button"
-          isBordered
-          size="sm"
-          className="transition-transform"
-          color={user ? "primary" : "default"}
-          name={user?.displayName || undefined}
-          src={user?.photoURL || undefined}
+        <User
+          name=""
+          avatarProps={{
+            as: "button",
+            isBordered: true,
+            size: "sm",
+            className: "transition-transform",
+            color: user ? "primary" : "default",
+            name: user?.displayName || undefined,
+            src: user?.photoURL || undefined,
+            alt: "your profile picture",
+          }}
+          classNames={{
+            name: "hidden",
+            description: "hidden",
+            wrapper: "hidden",
+            base: "flex justify-center items-center",
+          }}
         />
       </DropdownTrigger>
 
       <DropdownMenu aria-label="Profile Actions" variant="flat">
         <DropdownItem
-          key="profile"
+          textValue="your name and email"
           className={clsx("h-14 gap-2", !!user ? "flex" : "hidden")}
           showDivider
           isReadOnly
@@ -42,11 +52,10 @@ export const AuthMenu = () => {
         </DropdownItem>
 
         <DropdownItem
-          key="profile"
           className={clsx("h-14 gap-2", !!user ? "hidden" : "flex")}
           showDivider
           startContent={<FcGoogle size={22} />}
-          onPress={() => firebaseService.signIn().then(setUser)}
+          onPress={() => authService.signIn().then(setUser)}
         >
           Sign in with Google
         </DropdownItem>
@@ -59,13 +68,13 @@ export const AuthMenu = () => {
           Favourites
         </DropdownItem>
 
-        <DropdownItem isReadOnly>
+        <DropdownItem isReadOnly textValue="theme switch">
           <ThemeSwitch />
         </DropdownItem>
 
         <DropdownItem
           className={clsx(!!user ? "flex" : "hidden")}
-          onPress={() => firebaseService.signOut().then(setUser)}
+          onPress={() => authService.signOut().then(setUser)}
         >
           Logout
         </DropdownItem>

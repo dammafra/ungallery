@@ -1,15 +1,7 @@
-import { FirebaseOptions, initializeApp } from "firebase/app";
-import {
-  Auth,
-  GoogleAuthProvider,
-  getAuth,
-  signInWithPopup,
-  signOut,
-} from "firebase/auth";
+import { FirebaseApp, FirebaseOptions, initializeApp } from "firebase/app";
 
 class FirebaseService {
-  private auth: Auth;
-  private provider: GoogleAuthProvider;
+  app: FirebaseApp;
 
   constructor() {
     const config: FirebaseOptions = {
@@ -21,23 +13,7 @@ class FirebaseService {
       appId: "1:1085673273113:web:e9b043a1fc5f50aae63788",
     };
 
-    const app = initializeApp(config);
-    this.auth = getAuth(app);
-    this.provider = new GoogleAuthProvider();
-  }
-
-  signIn() {
-    return signInWithPopup(this.auth, this.provider).then((credential) => {
-      sessionStorage.setItem("user", JSON.stringify(credential.user));
-      return credential.user;
-    });
-  }
-
-  signOut() {
-    return signOut(this.auth).then(() => {
-      sessionStorage.removeItem("user");
-      return undefined;
-    });
+    this.app = initializeApp(config);
   }
 }
 

@@ -19,7 +19,7 @@ export default function Gallery() {
               key={photo.id}
               id={photo.id}
               image={photo.urls.small}
-              description={photo.description}
+              altDescription={photo.altDescription}
               authorName={photo.user.name}
               authorHandle={photo.user.username}
               authorProfile={photo.user.links.html}

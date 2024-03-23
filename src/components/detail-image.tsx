@@ -1,24 +1,25 @@
-import { Image } from "@nextui-org/react";
+import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
 export interface DetailImageProps {
   image: string;
   imageBlur: string;
-  description: string;
+  altDescription: string;
 }
 
 export const DetailImage = ({
   image,
   imageBlur,
-  description,
+  altDescription,
 }: DetailImageProps) => {
   return (
     <>
       <NextImage
         fill
         unoptimized
+        priority
         src={imageBlur}
-        alt={`${description} (blurred background)`}
+        alt={`${altDescription} (blurred background)`}
         className="object-cover blur-3xl animate-fade animate-duration-[3000ms]"
       />
       <div className="relative flex-1 rounded-large min-h-[28rem]">
@@ -26,8 +27,9 @@ export const DetailImage = ({
           as={NextImage}
           fill
           unoptimized
+          priority
           src={image}
-          alt={description}
+          alt={altDescription}
           className="object-contain object-center"
           classNames={{ wrapper: "min-w-full h-full" }}
         />

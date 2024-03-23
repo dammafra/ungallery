@@ -44,7 +44,7 @@ export const SearchBar = () => {
       endContent={
         <Button
           size="sm"
-          variant="flat"
+          variant="light"
           isIconOnly
           startContent={
             <FaShuffle
