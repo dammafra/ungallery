@@ -1,16 +1,24 @@
-import { NavbarContent, Navbar as NextUINavbar } from "@nextui-org/navbar";
+import {
+  NavbarContent,
+  NavbarItem,
+  Navbar as NextUINavbar,
+} from "@nextui-org/navbar";
+import { AuthMenu } from "./auth-menu";
 import { SearchBar } from "./search-bar";
-import { ThemeSwitch } from "./theme-switch";
 
 export const GalleryNavbar = () => {
   return (
     <NextUINavbar isBordered maxWidth="xl" position="sticky">
-      <NavbarContent justify="start" className="!flex-[2]">
-        <SearchBar />
-      </NavbarContent>
+      <NavbarContent>
+        <NavbarItem className="hidden lg:flex" />
 
-      <NavbarContent justify="end">
-        <ThemeSwitch />
+        <NavbarItem className="w-full">
+          <SearchBar />
+        </NavbarItem>
+
+        <NavbarItem>
+          <AuthMenu />
+        </NavbarItem>
       </NavbarContent>
     </NextUINavbar>
   );

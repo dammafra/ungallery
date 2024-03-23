@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@nextui-org/button";
+import { Switch } from "@nextui-org/switch";
 import { useIsSSR } from "@react-aria/ssr";
 import { useTheme } from "next-themes";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
@@ -10,17 +10,24 @@ export const ThemeSwitch = ({}) => {
   const isSSR = useIsSSR();
 
   return (
-    <Button
-      isIconOnly
-      variant="faded"
-      aria-label="theme-switch"
-      onPress={() => (theme === "light" ? setTheme("dark") : setTheme("light"))}
+    <Switch
+      id="SWWWW"
+      size="sm"
+      color="default"
+      className="flex-row-reverse justify-between max-w-full w-full"
+      defaultSelected={theme === "dark" || isSSR}
+      onChange={() =>
+        theme === "light" ? setTheme("dark") : setTheme("light")
+      }
+      thumbIcon={({ isSelected, className }) =>
+        isSelected ? (
+          <MdDarkMode className={className} />
+        ) : (
+          <MdLightMode className={className} />
+        )
+      }
     >
-      {theme === "dark" || isSSR ? (
-        <MdLightMode size={22} />
-      ) : (
-        <MdDarkMode size={22} />
-      )}
-    </Button>
+      Theme settings
+    </Switch>
   );
 };

@@ -5,6 +5,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { ThemeProviderProps } from "next-themes/dist/types";
 import { useRouter } from "next/navigation";
 import { PropsWithChildren } from "react";
+import { AuthProvider } from "./auth/auth.provider";
 import { SearchProvider } from "./search/search.provider";
 
 export interface ProvidersProps extends PropsWithChildren {
@@ -17,7 +18,9 @@ export function Providers({ children, themeProps }: ProvidersProps) {
   return (
     <NextUIProvider navigate={router.push} className="h-screen">
       <NextThemesProvider {...themeProps}>
-        <SearchProvider>{children}</SearchProvider>
+        <AuthProvider>
+          <SearchProvider>{children}</SearchProvider>
+        </AuthProvider>
       </NextThemesProvider>
     </NextUIProvider>
   );

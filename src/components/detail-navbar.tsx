@@ -1,16 +1,22 @@
-import { NavbarContent, Navbar as NextUINavbar } from "@nextui-org/navbar";
+import {
+  NavbarContent,
+  NavbarItem,
+  Navbar as NextUINavbar,
+} from "@nextui-org/navbar";
+import { AuthMenu } from "./auth-menu";
 import { BackButton } from "./back-button";
-import { ThemeSwitch } from "./theme-switch";
 
 export const DetailNavbar = () => {
   return (
     <NextUINavbar isBordered maxWidth="xl" position="sticky">
-      <NavbarContent justify="start">
-        <BackButton />
-      </NavbarContent>
+      <NavbarContent>
+        <NavbarItem className="w-full">
+          <BackButton />
+        </NavbarItem>
 
-      <NavbarContent justify="end">
-        <ThemeSwitch />
+        <NavbarItem>
+          <AuthMenu />
+        </NavbarItem>
       </NavbarContent>
     </NextUINavbar>
   );
