@@ -45,7 +45,7 @@ export const DetailSidebar = ({
         </CardHeader>
         <Divider />
 
-        <CardBody className="hidden lg:flex">
+        <CardBody className="hidden lg:flex h-96">
           <CommentsList data={data} loading={loading} />
         </CardBody>
         <Divider className="hidden lg:flex" />

@@ -2,7 +2,9 @@
 
 import { GalleryItem } from "@components/gallery-item";
 import { GalleryLoader } from "@components/gallery-loader";
+import { NoData } from "@components/no-data";
 import { useGetFavourites } from "@hooks/use-get-favourites";
+import { FaHeart } from "react-icons/fa6";
 
 export default function Favourites() {
   const { data, loading } = useGetFavourites();
@@ -13,7 +15,7 @@ export default function Favourites() {
       <div className="flex flex-row justify-center flex-wrap gap-4">
         {loading ? (
           <GalleryLoader />
-        ) : (
+        ) : !!data.length ? (
           data.map((photo) => (
             <GalleryItem
               key={photo.id}
@@ -28,6 +30,15 @@ export default function Favourites() {
               }}
             />
           ))
+        ) : (
+          <NoData>
+            <p>
+              Love a photo? Click the heart
+              <FaHeart className="inline mx-2" color="red" />
+              to add it to your favorites and easily access it later.
+            </p>
+            <p>Your favorites are just a click away!</p>
+          </NoData>
         )}
       </div>
     </section>
