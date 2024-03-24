@@ -6,7 +6,7 @@ import { useSearch } from "@providers/search/use-search";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { generate } from "random-words";
 import { useEffect, useState } from "react";
-import { FaMagnifyingGlass, FaShuffle } from "react-icons/fa6";
+import { FaMagnifyingGlass, FaShuffle, FaXmark } from "react-icons/fa6";
 import { useDebounce } from "use-debounce";
 
 export const SearchBar = () => {
@@ -43,20 +43,36 @@ export const SearchBar = () => {
         />
       }
       endContent={
-        <Button
-          size="sm"
-          variant="light"
-          isIconOnly
-          startContent={
-            <FaShuffle
-              size={14}
-              className="text-default-foreground flex-shrink-0"
+        <div className="flex gap-0.5">
+          {value && (
+            <Button
+              size="sm"
+              variant="light"
+              isIconOnly
+              startContent={
+                <FaXmark
+                  size={14}
+                  className="text-default-foreground flex-shrink-0"
+                />
+              }
+              onPress={() => setValue("")}
             />
-          }
-          onPress={() => setValue(generate() as string)}
-        />
+          )}
+
+          <Button
+            size="sm"
+            variant="light"
+            isIconOnly
+            startContent={
+              <FaShuffle
+                size={14}
+                className="text-default-foreground flex-shrink-0"
+              />
+            }
+            onPress={() => setValue(generate() as string)}
+          />
+        </div>
       }
-      type="search"
       value={value}
       onValueChange={setValue}
     />
