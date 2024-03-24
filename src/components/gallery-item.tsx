@@ -4,17 +4,18 @@ import { Link } from "@nextui-org/link";
 import { Credits, CreditsProps } from "./credits";
 import { FavouriteButton } from "./favourite-button";
 
-export interface GalleryItemProps extends CreditsProps {
+export interface GalleryItemProps {
   id: string;
   image: string;
   altDescription: string;
+  creditsProps: CreditsProps;
 }
 
 export const GalleryItem = ({
   id,
   image,
   altDescription,
-  ...props
+  creditsProps,
 }: GalleryItemProps) => {
   return (
     <div className="group relative">
@@ -44,7 +45,7 @@ export const GalleryItem = ({
             group-hover:animate-fade-up 
             group-hover:animate-duration-500"
         >
-          <Credits {...props} />
+          <Credits {...creditsProps} />
         </CardFooter>
       </Card>
     </div>

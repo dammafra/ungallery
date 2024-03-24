@@ -14,9 +14,7 @@ export const AuthModal = ({ ...props }: Omit<ModalProps, "children">) => {
       <ModalContent>
         {() => (
           <>
-            <ModalHeader className="flex flex-col gap-1">
-              Sign in Required
-            </ModalHeader>
+            <ModalHeader>Sign in Required</ModalHeader>
             <ModalBody>
               Oops! It looks like you&apos;re trying to set a favorite or leave
               a comment on a photo. Please sign in with your Google account to

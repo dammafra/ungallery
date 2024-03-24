@@ -9,7 +9,7 @@ export default function Gallery() {
 
   return (
     <section className="flex flex-col items-center">
-      <div className="flex flex-row justify-center flex-wrap gap-4 py-8 md:py-10">
+      <div className="flex flex-row justify-center flex-wrap gap-4">
         {loading ? (
           <GalleryLoader />
         ) : (
@@ -19,10 +19,12 @@ export default function Gallery() {
               id={photo.id}
               image={photo.urls.small}
               altDescription={photo.alt_description}
-              authorName={photo.user.name}
-              authorHandle={photo.user.username}
-              authorProfile={photo.user.links.html}
-              authorImage={photo.user.profile_image.medium}
+              creditsProps={{
+                authorName: photo.user.name,
+                authorHandle: photo.user.username,
+                authorProfile: photo.user.links.html,
+                authorImage: photo.user.profile_image.medium,
+              }}
             />
           ))
         )}

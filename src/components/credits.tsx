@@ -2,6 +2,7 @@ import { Link } from "@nextui-org/link";
 import { User } from "@nextui-org/user";
 
 export interface CreditsProps {
+  size?: "sm" | "lg";
   authorName: string;
   authorHandle: string;
   authorProfile: string;
@@ -9,6 +10,7 @@ export interface CreditsProps {
 }
 
 export const Credits = ({
+  size = "sm",
   authorName,
   authorProfile,
   authorHandle,
@@ -42,6 +44,7 @@ export const Credits = ({
       avatarProps={{
         src: authorImage,
         alt: `${authorName} profile picture`,
+        size,
       }}
     />
   );

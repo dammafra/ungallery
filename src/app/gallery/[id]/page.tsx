@@ -25,10 +25,13 @@ export default function Detail({ params }: { params: DetailParams }) {
       <DetailSidebar
         id={data.id}
         description={data.description}
-        authorName={data.user.name}
-        authorHandle={data.user.username}
-        authorProfile={data.user.links.html}
-        authorImage={data.user.profile_image.medium}
+        creditsProps={{
+          size: "lg",
+          authorName: data.user.name,
+          authorHandle: data.user.username,
+          authorProfile: data.user.links.html,
+          authorImage: data.user.profile_image.medium,
+        }}
       />
     </section>
   );
