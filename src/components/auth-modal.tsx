@@ -8,7 +8,7 @@ import {
 } from "@nextui-org/modal";
 import { AuthButton } from "./auth-button";
 
-export const AuthModal = ({ ...props }: Omit<ModalProps, "children">) => {
+export const AuthModal = (props: Omit<ModalProps, "children">) => {
   return (
     <Modal backdrop="blur" size="xs" {...props}>
       <ModalContent>

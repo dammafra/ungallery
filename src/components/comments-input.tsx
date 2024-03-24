@@ -1,16 +1,13 @@
-import { Comment } from "@models/comment.model";
 import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 import { useAuth } from "@providers/auth/use-auth";
+import { useComments } from "@providers/comments/use-comments";
 import { useState } from "react";
 import { FaTurnUp } from "react-icons/fa6";
 
-export interface CommentsInputProps {
-  onSubmit: (comment: Comment) => void;
-}
-
-export const CommentsInput = ({ onSubmit }: CommentsInputProps) => {
+export const CommentsInput = () => {
   const { user, openAuthModal } = useAuth();
+  const { addComment } = useComments();
   const [content, setContent] = useState("");
 
   const submitHandler = () => {
@@ -22,7 +19,7 @@ export const CommentsInput = ({ onSubmit }: CommentsInputProps) => {
     }
 
     setContent("");
-    onSubmit({
+    addComment({
       content,
       userId: user.uid,
       userName: user.displayName!,

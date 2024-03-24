@@ -6,20 +6,12 @@ import {
   ModalHeader,
   ModalProps,
 } from "@nextui-org/modal";
-import { CommentsInput, CommentsInputProps } from "./comments-input";
-import { CommentsList, CommentsListProps } from "./comments-list";
+import { CommentsInput } from "./comments-input";
+import { CommentsList } from "./comments-list";
 
-export interface CommentsModalProps
-  extends CommentsListProps,
-    CommentsInputProps,
-    Omit<ModalProps, "children" | "onSubmit"> {}
-
-export const CommentsModal = ({
-  data,
-  loading,
-  onSubmit,
-  ...props
-}: CommentsModalProps) => {
+export const CommentsModal = (
+  props: Omit<ModalProps, "children" | "onSubmit">
+) => {
   return (
     <Modal
       motionProps={{
@@ -57,10 +49,10 @@ export const CommentsModal = ({
           <>
             <ModalHeader className="flex flex-col gap-1">Comments</ModalHeader>
             <ModalBody>
-              <CommentsList data={data} loading={loading} />
+              <CommentsList />
             </ModalBody>
             <ModalFooter>
-              <CommentsInput onSubmit={onSubmit} />
+              <CommentsInput />
             </ModalFooter>
           </>
         )}

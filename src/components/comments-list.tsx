@@ -1,23 +1,32 @@
-import { Comment as CommentModel } from "@models/comment.model";
 import { ScrollShadow } from "@nextui-org/scroll-shadow";
+import { useAuth } from "@providers/auth/use-auth";
+import { useComments } from "@providers/comments/use-comments";
 import { Comment } from "./comment";
+import { CommentDeleteButton } from "./comment-delete-button";
 import { DetailLoader } from "./detail-loader";
 import { NoData } from "./no-data";
 
-export interface CommentsListProps {
-  data: CommentModel[];
-  loading: boolean;
-}
+export const CommentsList = () => {
+  const { user } = useAuth();
+  const { comments, loading, removeComment } = useComments();
 
-export const CommentsList = ({ data, loading }: CommentsListProps) => {
   if (loading) {
     return <DetailLoader />;
   }
 
-  return !!data.length ? (
+  return !!comments.length ? (
     <ScrollShadow className="flex flex-col gap-4 lg:h-96 max-h-96">
-      {data.map((comment, index) => (
-        <Comment key={index} {...comment} />
+      {comments.map((comment, index) => (
+        <div
+          key={index}
+          className="flex selection:w-full justify-between items-center pr-4"
+        >
+          <Comment {...comment} />
+
+          {user?.uid === comment.userId && (
+            <CommentDeleteButton onConfirm={() => removeComment(comment)} />
+          )}
+        </div>
       ))}
     </ScrollShadow>
   ) : (

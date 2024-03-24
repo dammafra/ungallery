@@ -1,6 +1,7 @@
 import { Comment } from "@models/comment.model";
 import {
   Firestore,
+  arrayRemove,
   arrayUnion,
   doc,
   getDoc,
@@ -25,8 +26,14 @@ class CommentsService {
       setDoc(docRef, { comments: [] });
     }
 
-    return updateDoc(doc(this.db, "comments", photoId), {
+    return updateDoc(docRef, {
       comments: arrayUnion(comment),
+    });
+  }
+
+  async removeComment(photoId: string, comment: Comment) {
+    return updateDoc(doc(this.db, "comments", photoId), {
+      comments: arrayRemove(comment),
     });
   }
 

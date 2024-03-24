@@ -1,4 +1,3 @@
-import { useComments } from "@hooks/use-comments";
 import { Button } from "@nextui-org/button";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
@@ -21,7 +20,6 @@ export const DetailSidebar = ({
   description,
   creditsProps,
 }: DetailSidebarProps) => {
-  const { data, loading, post } = useComments(id);
   const [showCommentsModal, setShowCommentsModal] = useState(false);
 
   return (
@@ -46,19 +44,16 @@ export const DetailSidebar = ({
         <Divider />
 
         <CardBody className="hidden lg:flex h-96">
-          <CommentsList data={data} loading={loading} />
+          <CommentsList />
         </CardBody>
         <Divider className="hidden lg:flex" />
 
         <CardFooter className="hidden lg:flex">
-          <CommentsInput onSubmit={post} />
+          <CommentsInput />
         </CardFooter>
       </Card>
 
       <CommentsModal
-        data={data}
-        loading={loading}
-        onSubmit={post}
         isOpen={showCommentsModal}
         onClose={() => setShowCommentsModal(false)}
       />
