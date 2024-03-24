@@ -1,12 +1,12 @@
 "use client";
 
+import { Chip } from "@nextui-org/chip";
 import {
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
 } from "@nextui-org/dropdown";
-import { Chip } from "@nextui-org/react";
 import { User } from "@nextui-org/user";
 import { useAuth } from "@providers/auth/use-auth";
 import { authService } from "@services/auth.service";

@@ -24,6 +24,7 @@ export default function Detail({ params }: { params: DetailParams }) {
 
       <DetailSidebar
         id={data.id}
+        description={data.description}
         authorName={data.user.name}
         authorHandle={data.user.username}
         authorProfile={data.user.links.html}

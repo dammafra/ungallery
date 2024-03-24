@@ -1,10 +1,11 @@
+import { Photo } from "@models/photo.model";
 import { unsplashService } from "@services/unsplash.service";
 import { PropsWithChildren, useEffect, useState } from "react";
 import { SearchContext } from "./search.context";
 
 export const SearchProvider = ({ children }: PropsWithChildren) => {
-  // TODO: model/adapter
-  const [data, setData] = useState<any[]>([]);
+  // TODO: adapter
+  const [data, setData] = useState<Photo[]>([]);
   const [loading, setLoading] = useState(false);
 
   const [[query, page], setRequest] = useState<[string, number]>(["", 1]);
@@ -24,8 +25,8 @@ export const SearchProvider = ({ children }: PropsWithChildren) => {
     unsplashService
       .search(query, page, perPage)
       .then((res) => {
-        setData(res.response!.results);
-        setTotalPages(res.response!.total_pages);
+        setData(res.results);
+        setTotalPages(res.total_pages);
       })
       .finally(() => setLoading(false));
   }, [query, page, perPage]);
