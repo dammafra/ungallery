@@ -1,6 +1,5 @@
 "use client";
 
-import { GalleryFooter } from "@components/gallery-footer";
 import { GalleryItem } from "@components/gallery-item";
 import { GalleryLoader } from "@components/gallery-loader";
 import { useSearch } from "@providers/search/use-search";
@@ -28,8 +27,6 @@ export default function Gallery() {
           ))
         )}
       </div>
-
-      <GalleryFooter />
     </section>
   );
 }
