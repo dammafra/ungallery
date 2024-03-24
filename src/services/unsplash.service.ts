@@ -10,14 +10,15 @@ class UnsplashService {
           query,
           page: page.toString(),
           perPage: perPage.toString(),
-        })
+        }),
+      { cache: "default" }
     ).then((res) => res.json());
   }
 
   getPhoto(id: string): Promise<Photo> {
-    return fetch(
-      "/api/unsplash-proxy/photos?" + new URLSearchParams({ id })
-    ).then((res) => res.json());
+    return fetch("/api/unsplash-proxy/photos?" + new URLSearchParams({ id }), {
+      cache: "default",
+    }).then((res) => res.json());
   }
 }
 

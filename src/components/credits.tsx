@@ -14,7 +14,6 @@ export const Credits = ({
   authorHandle,
   authorImage,
 }: CreditsProps) => {
-  // TODO: improve with utils for build links?
   return (
     <User
       className="w-full justify-start"

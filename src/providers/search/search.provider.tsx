@@ -4,7 +4,6 @@ import { PropsWithChildren, useEffect, useState } from "react";
 import { SearchContext } from "./search.context";
 
 export const SearchProvider = ({ children }: PropsWithChildren) => {
-  // TODO: adapter
   const [data, setData] = useState<Photo[]>([]);
   const [loading, setLoading] = useState(false);
 

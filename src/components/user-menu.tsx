@@ -68,8 +68,7 @@ export const UserMenu = () => {
         </DropdownItem>
 
         <DropdownItem
-          // TODO:
-          href="#"
+          href="/favourites"
           endContent={<Chip>{favourites.length}</Chip>}
           className={clsx(!!user ? "flex" : "hidden")}
         >

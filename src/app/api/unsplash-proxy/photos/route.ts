@@ -6,10 +6,12 @@ export async function GET(request: NextRequest) {
     accessKey: process.env.UNSPLASH_API_ACCESS_KEY!,
   });
 
-  // TODO: improve with models and adapters
   const photoId = request.nextUrl.searchParams.get("id") as string;
 
   const res = await client.photos.get({ photoId });
 
-  return new Response(JSON.stringify(res));
+  return new Response(JSON.stringify(res.response), {
+    // one week cache
+    headers: [["Cache-Control", "max-age=604800"]],
+  });
 }

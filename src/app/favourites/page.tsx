@@ -2,11 +2,12 @@
 
 import { GalleryItem } from "@components/gallery-item";
 import { GalleryLoader } from "@components/gallery-loader";
-import { useSearch } from "@providers/search/use-search";
+import { useGetFavourites } from "@hooks/use-get-favourites";
 
-export default function Gallery() {
-  const { data, loading } = useSearch();
+export default function Favourites() {
+  const { data, loading } = useGetFavourites();
 
+  // TODO: refactor with gallery/page?
   return (
     <section className="flex flex-col items-center">
       <div className="flex flex-row justify-center flex-wrap gap-4 py-8 md:py-10">

@@ -25,6 +25,7 @@ export const DetailSidebar = ({
         )}
       </CardHeader>
       <Divider />
+      {/* TODO: comments */}
     </Card>
   );
 };

@@ -1,9 +1,10 @@
 "use client";
 
+import { Photo } from "@models/photo.model";
 import { createContext } from "react";
 
 export interface SearchContext {
-  data: any[];
+  data: Photo[];
   loading: boolean;
 
   query: string;
