@@ -1,3 +1,4 @@
+import { AuthModal } from "@components/auth-modal";
 import { storageService } from "@services/storage.service";
 import { User } from "firebase/auth";
 import { PropsWithChildren, useEffect, useState } from "react";
@@ -6,6 +7,7 @@ import { AuthContext } from "./auth.context";
 export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [user, setUser] = useState<User>();
   const [favourites, setFavourites] = useState<string[]>([]);
+  const [showAuthModal, setShowAuthModal] = useState(false);
 
   useEffect(() => {
     const sessionUser = sessionStorage.getItem("user");
@@ -15,9 +17,12 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   }, []);
 
   useEffect(() => {
-    user
-      ? storageService.getFavourites(user.uid).then(setFavourites)
-      : setFavourites([]);
+    if (user) {
+      storageService.getFavourites(user.uid).then(setFavourites);
+      setShowAuthModal(false);
+    } else {
+      setFavourites([]);
+    }
   }, [user]);
 
   const addFavourite = (photoId: string) => {
@@ -38,6 +43,10 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       );
   };
 
+  const openAuthModal = () => {
+    setShowAuthModal(true);
+  };
+
   const contextValue: AuthContext = {
     user,
     setUser,
@@ -45,9 +54,17 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
     addFavourite,
     removeFavourite,
+
+    openAuthModal,
   };
 
   return (
-    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>
+      {children}
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+      />
+    </AuthContext.Provider>
   );
 };

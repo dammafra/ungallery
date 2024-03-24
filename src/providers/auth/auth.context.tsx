@@ -10,6 +10,8 @@ export interface AuthContext {
   favourites: string[];
   addFavourite: (photoId: string) => void;
   removeFavourite: (photoId: string) => void;
+
+  openAuthModal: () => void;
 }
 
 export const AuthContext = createContext<AuthContext | undefined>(undefined);

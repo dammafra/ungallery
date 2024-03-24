@@ -12,7 +12,7 @@ import { useAuth } from "@providers/auth/use-auth";
 import { authService } from "@services/auth.service";
 import clsx from "clsx";
 import { FaRightFromBracket } from "react-icons/fa6";
-import { FcGoogle } from "react-icons/fc";
+import { AuthButton } from "./auth-button";
 import { ThemeSwitch } from "./theme-switch";
 
 export const UserMenu = () => {
@@ -44,29 +44,34 @@ export const UserMenu = () => {
 
       <DropdownMenu aria-label="Profile Actions" variant="flat">
         <DropdownItem
-          textValue="your name and email"
-          className={clsx("h-14 gap-2", !!user ? "flex" : "hidden")}
-          showDivider
           isReadOnly
+          showDivider
+          textValue="your name and email"
+          className={clsx(
+            "h-14 gap-2 data-[hover=true]:bg-transparent cursor-auto",
+            !!user ? "flex" : "hidden"
+          )}
         >
           <p className="font-semibold">{user?.displayName}</p>
           <p>{user?.email}</p>
         </DropdownItem>
 
         <DropdownItem
-          className={clsx("h-14 gap-2", !!user ? "hidden" : "flex")}
+          isReadOnly
           showDivider
-          startContent={<FcGoogle size={22} />}
-          onPress={() => authService.signIn().then(setUser)}
+          className={clsx(
+            "data-[hover=true]:bg-transparent",
+            !!user ? "hidden" : "flex"
+          )}
         >
-          Sign in with Google
+          <AuthButton />
         </DropdownItem>
 
         <DropdownItem
-          className={clsx(!!user ? "flex" : "hidden")}
-          endContent={<Chip>{favourites.length}</Chip>}
           // TODO:
           href="#"
+          endContent={<Chip>{favourites.length}</Chip>}
+          className={clsx(!!user ? "flex" : "hidden")}
         >
           Favourites
         </DropdownItem>
@@ -76,11 +81,11 @@ export const UserMenu = () => {
         </DropdownItem>
 
         <DropdownItem
-          className={clsx(!!user ? "flex" : "hidden")}
           onPress={() => authService.signOut().then(setUser)}
           endContent={
             <FaRightFromBracket className="text-default-foreground" size={14} />
           }
+          className={clsx(!!user ? "flex" : "hidden")}
         >
           Logout
         </DropdownItem>

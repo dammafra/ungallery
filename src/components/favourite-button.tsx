@@ -9,10 +9,9 @@ export interface FavouriteButtonProps {
 }
 
 export const FavouriteButton = ({ photoId }: FavouriteButtonProps) => {
-  const { user, favourites, addFavourite, removeFavourite } = useAuth();
+  const { user, favourites, addFavourite, removeFavourite, openAuthModal } =
+    useAuth();
   const isFavourite = favourites.includes(photoId);
-
-  if (!user) return <></>;
 
   return (
     <Button
@@ -20,9 +19,14 @@ export const FavouriteButton = ({ photoId }: FavouriteButtonProps) => {
       className="rounded-full"
       variant="flat"
       aria-label="favourite"
-      onPress={() =>
-        isFavourite ? removeFavourite(photoId) : addFavourite(photoId)
-      }
+      onPress={() => {
+        if (!user) {
+          openAuthModal();
+          return;
+        }
+
+        isFavourite ? removeFavourite(photoId) : addFavourite(photoId);
+      }}
     >
       {isFavourite ? (
         <FaHeart color="red" size={22} />
