@@ -26,7 +26,7 @@ export const DetailSidebar = ({
 
   return (
     <>
-      <Card className="w-full h-fit self-center lg:w-[28rem] animate-fade-up lg:animate-fade-left rounded-b-none lg:rounded-b-large">
+      <Card className="sticky bottom-0 z-10 w-full h-fit self-center lg:w-[28rem] animate-fade-up lg:animate-fade-left rounded-b-none lg:rounded-b-large">
         <CardHeader className="flex-col items-start gap-4">
           <div className="flex flex-row justify-between w-full gap-2">
             <Credits {...creditsProps} />
