@@ -17,13 +17,7 @@ class CommentsService {
     this.db = getFirestore(firebaseService.app);
   }
 
-  addComment(photoId: string, comment: Comment) {
-    return updateDoc(doc(this.db, "comments", photoId), {
-      comments: arrayUnion(comment),
-    });
-  }
-
-  async getComments(photoId: string): Promise<Comment[]> {
+  async addComment(photoId: string, comment: Comment) {
     const docRef = doc(this.db, "comments", photoId);
     const docSnap = await getDoc(docRef);
 
@@ -31,7 +25,15 @@ class CommentsService {
       setDoc(docRef, { comments: [] });
     }
 
-    return docSnap.data()?.comments || [];
+    return updateDoc(doc(this.db, "comments", photoId), {
+      comments: arrayUnion(comment),
+    });
+  }
+
+  async getComments(photoId: string): Promise<Comment[]> {
+    return getDoc(doc(this.db, "comments", photoId)).then(
+      (res) => res.data()?.comments || []
+    );
   }
 }
 

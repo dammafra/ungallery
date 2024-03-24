@@ -42,7 +42,7 @@ export const GalleryItem = ({
             absolute bottom-1 z-10
             mx-1 w-[calc(100%-8px)] 
             invisible group-hover:visible 
-            group-hover:animate-fade-up 
+            group-hover:animate-fade 
             group-hover:animate-duration-500"
         >
           <Credits {...creditsProps} />
