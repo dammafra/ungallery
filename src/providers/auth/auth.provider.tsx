@@ -1,4 +1,5 @@
 import { AuthModal } from "@components/auth-modal";
+import { authService } from "@services/auth.service";
 import { User } from "firebase/auth";
 import { PropsWithChildren, useEffect, useState } from "react";
 import { AuthContext } from "./auth.context";
@@ -8,10 +9,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [showAuthModal, setShowAuthModal] = useState(false);
 
   useEffect(() => {
-    const sessionUser = sessionStorage.getItem("user");
-    if (sessionUser) {
-      setUser(JSON.parse(sessionUser));
-    }
+    authService.subscribe(setUser);
   }, []);
 
   useEffect(() => {

@@ -1,7 +1,11 @@
 import {
   Auth,
   GoogleAuthProvider,
+  User,
+  browserLocalPersistence,
   getAuth,
+  onAuthStateChanged,
+  setPersistence,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
@@ -13,20 +17,25 @@ class AuthService {
 
   constructor() {
     this.auth = getAuth(firebaseService.app);
+    setPersistence(this.auth, browserLocalPersistence);
     this.provider = new GoogleAuthProvider();
   }
 
   signIn() {
     return signInWithPopup(this.auth, this.provider).then((credential) => {
-      sessionStorage.setItem("user", JSON.stringify(credential.user));
       return credential.user;
     });
   }
 
   signOut() {
     return signOut(this.auth).then(() => {
-      sessionStorage.removeItem("user");
       return undefined;
+    });
+  }
+
+  subscribe(callback: (user?: User) => void) {
+    onAuthStateChanged(this.auth, (user) => {
+      callback(user || undefined);
     });
   }
 }
