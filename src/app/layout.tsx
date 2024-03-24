@@ -29,11 +29,11 @@ export const viewport: Viewport = {
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="h-[100dvh] " suppressHydrationWarning>
       <head />
       <body
         className={clsx(
-          "h-screen bg-background text-foreground font-sans antialiased",
+          "h-full text-foreground font-sans antialiased",
           fontSans.variable
         )}
       >

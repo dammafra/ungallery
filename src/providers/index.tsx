@@ -17,7 +17,7 @@ export function Providers({ children, themeProps }: ProvidersProps) {
   const router = useRouter();
 
   return (
-    <NextUIProvider navigate={router.push} className="h-screen">
+    <NextUIProvider navigate={router.push} className="h-full">
       <NextThemesProvider {...themeProps}>
         <AuthProvider>
           <FavouritesProvider>
