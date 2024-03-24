@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@nextui-org/button";
-import { useAuth } from "@providers/auth/use-auth";
+import { useFavourites } from "@providers/favourites/use-favourites";
 import { FaHeart, FaRegHeart } from "react-icons/fa6";
 
 export interface FavouriteButtonProps {
@@ -9,8 +9,7 @@ export interface FavouriteButtonProps {
 }
 
 export const FavouriteButton = ({ photoId }: FavouriteButtonProps) => {
-  const { user, favourites, addFavourite, removeFavourite, openAuthModal } =
-    useAuth();
+  const { favourites, addFavourite, removeFavourite } = useFavourites();
   const isFavourite = favourites.includes(photoId);
 
   return (
@@ -20,11 +19,6 @@ export const FavouriteButton = ({ photoId }: FavouriteButtonProps) => {
       variant="flat"
       aria-label="favourite"
       onPress={() => {
-        if (!user) {
-          openAuthModal();
-          return;
-        }
-
         isFavourite ? removeFavourite(photoId) : addFavourite(photoId);
       }}
     >

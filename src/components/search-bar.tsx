@@ -24,6 +24,7 @@ export const SearchBar = () => {
   useEffect(() => {
     router.replace(`${pathname}?${new URLSearchParams({ query })}`);
     setQuery(query);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   return (

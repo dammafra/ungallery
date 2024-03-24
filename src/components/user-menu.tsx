@@ -9,6 +9,7 @@ import {
 } from "@nextui-org/dropdown";
 import { User } from "@nextui-org/user";
 import { useAuth } from "@providers/auth/use-auth";
+import { useFavourites } from "@providers/favourites/use-favourites";
 import { authService } from "@services/auth.service";
 import clsx from "clsx";
 import { FaRightFromBracket } from "react-icons/fa6";
@@ -16,11 +17,14 @@ import { AuthButton } from "./auth-button";
 import { ThemeSwitch } from "./theme-switch";
 
 export const UserMenu = () => {
-  const { user, setUser, favourites } = useAuth();
+  const { user, setUser } = useAuth();
+  const { favourites } = useFavourites();
 
   return (
     <Dropdown placement="bottom-end">
       <DropdownTrigger>
+        {/* TODO: use avatar component when issue is closed */}
+        {/* https://github.com/nextui-org/nextui/issues/2474 */}
         <User
           name=""
           avatarProps={{

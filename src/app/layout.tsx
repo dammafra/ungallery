@@ -1,6 +1,6 @@
-import "@/styles/globals.css";
 import { Providers } from "@providers";
 import { fontSans } from "@styles/fonts";
+import "@styles/globals.css";
 import clsx from "clsx";
 import { Metadata, Viewport } from "next";
 import { PropsWithChildren } from "react";

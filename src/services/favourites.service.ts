@@ -8,10 +8,9 @@ import {
   setDoc,
   updateDoc,
 } from "firebase/firestore";
-
 import { firebaseService } from "./firebase.service";
 
-class StorageService {
+class FavouritesService {
   private db: Firestore;
 
   constructor() {
@@ -30,7 +29,7 @@ class StorageService {
     });
   }
 
-  async getFavourites(userId: string) {
+  async getFavourites(userId: string): Promise<string[]> {
     const docRef = doc(this.db, "favourites", userId);
     const docSnap = await getDoc(docRef);
 
@@ -42,4 +41,4 @@ class StorageService {
   }
 }
 
-export const storageService = new StorageService();
+export const favouritesService = new FavouritesService();
