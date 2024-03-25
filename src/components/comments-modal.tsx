@@ -6,14 +6,37 @@ import {
   ModalHeader,
   ModalProps,
 } from "@nextui-org/modal";
+import { useEffect } from "react";
 import { CommentsInput } from "./comments-input";
 import { CommentsList } from "./comments-list";
 
-export const CommentsModal = (
-  props: Omit<ModalProps, "children" | "onSubmit">
-) => {
+export const CommentsModal = ({
+  isOpen,
+  onClose,
+  ...props
+}: Omit<ModalProps, "children" | "onSubmit">) => {
+  useEffect(() => {
+    const preventHistoryBack = (event: PopStateEvent) => {
+      if (!isOpen) {
+        return;
+      }
+
+      event.preventDefault();
+      window.history.forward();
+      onClose && onClose();
+    };
+
+    window.addEventListener("popstate", preventHistoryBack);
+
+    return () => {
+      window.removeEventListener("popstate", preventHistoryBack);
+    };
+  }, [isOpen]);
+
   return (
     <Modal
+      isOpen={isOpen}
+      onClose={onClose}
       motionProps={{
         variants: {
           enter: {
