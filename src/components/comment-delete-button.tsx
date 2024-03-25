@@ -18,8 +18,9 @@ export const CommentDeleteButton = ({
           color="danger"
           variant="light"
           className="group"
-          startContent={<FaTrash />}
-        />
+        >
+          <FaTrash />
+        </Button>
       </PopoverTrigger>
       <PopoverContent>
         <div className="flex gap-2 items-center">

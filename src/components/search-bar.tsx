@@ -49,28 +49,26 @@ export const SearchBar = () => {
               size="sm"
               variant="light"
               isIconOnly
-              startContent={
-                <FaXmark
-                  size={14}
-                  className="text-default-foreground flex-shrink-0"
-                />
-              }
               onPress={() => setValue("")}
-            />
+            >
+              <FaXmark
+                size={14}
+                className="text-default-foreground flex-shrink-0"
+              />
+            </Button>
           )}
 
           <Button
             size="sm"
             variant="light"
             isIconOnly
-            startContent={
-              <FaShuffle
-                size={14}
-                className="text-default-foreground flex-shrink-0"
-              />
-            }
             onPress={() => setValue(generate() as string)}
-          />
+          >
+            <FaShuffle
+              size={14}
+              className="text-default-foreground flex-shrink-0"
+            />
+          </Button>
         </div>
       }
       value={value}

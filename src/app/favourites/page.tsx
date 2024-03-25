@@ -9,7 +9,7 @@ import { FaHeart } from "react-icons/fa6";
 export default function Favourites() {
   const { data, loading } = useGetFavourites();
 
-  // TODO: refactor with gallery/page?
+  // TODO: refactor with gallery/search/page?
   return (
     <section className="flex flex-col items-center">
       <div className="flex flex-row justify-center flex-wrap gap-4">
