@@ -1,7 +1,7 @@
+import { Badge } from "@nextui-org/badge";
 import { Button } from "@nextui-org/button";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
-import { Badge } from "@nextui-org/react";
 import { useComments } from "@providers/comments/use-comments";
 import { useState } from "react";
 import { FaComment } from "react-icons/fa6";
