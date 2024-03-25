@@ -1,7 +1,9 @@
+import { Badge } from "@nextui-org/badge";
 import { Button } from "@nextui-org/button";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
-import { useState } from "react";
+import { useComments } from "@providers/comments/use-comments";
+import { useEffect, useState } from "react";
 import { FaComment } from "react-icons/fa6";
 import { CommentsInput } from "./comments-input";
 import { CommentsList } from "./comments-list";
@@ -20,7 +22,21 @@ export const DetailSidebar = ({
   description,
   creditsProps,
 }: DetailSidebarProps) => {
+  const { comments } = useComments();
   const [showCommentsModal, setShowCommentsModal] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // tailwind lg breakpoint
+      if (window.innerWidth > 1024) setShowCommentsModal(false);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <>
@@ -28,13 +44,20 @@ export const DetailSidebar = ({
         <CardHeader className="flex-col items-start gap-4">
           <div className="flex flex-row justify-between w-full gap-2">
             <Credits {...creditsProps} />
-            <Button
-              isIconOnly
-              variant="flat"
-              startContent={<FaComment />}
-              className="flex lg:hidden rounded-full"
-              onClick={() => setShowCommentsModal(true)}
-            />
+            <Badge
+              size="sm"
+              color="default"
+              content={comments.length}
+              isInvisible={!comments.length}
+            >
+              <Button
+                isIconOnly
+                variant="flat"
+                startContent={<FaComment />}
+                className="flex lg:hidden rounded-full"
+                onClick={() => setShowCommentsModal(true)}
+              />
+            </Badge>
             <FavouriteButton photoId={id} />
           </div>
           {description && (

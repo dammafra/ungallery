@@ -3,6 +3,8 @@ import {
   NavbarItem,
   Navbar as NextUINavbar,
 } from "@nextui-org/navbar";
+import { Spinner } from "@nextui-org/spinner";
+import { Suspense } from "react";
 import { SearchBar } from "./search-bar";
 import { UserMenu } from "./user-menu";
 
@@ -13,7 +15,9 @@ export const GalleryNavbar = () => {
         <NavbarItem className="hidden lg:flex" />
 
         <NavbarItem className="w-full">
-          <SearchBar />
+          <Suspense fallback={<Spinner />}>
+            <SearchBar />
+          </Suspense>
         </NavbarItem>
 
         <NavbarItem>
