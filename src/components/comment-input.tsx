@@ -5,7 +5,7 @@ import { useComments } from "@providers/comments/use-comments";
 import { useState } from "react";
 import { FaTurnUp } from "react-icons/fa6";
 
-export const CommentsInput = () => {
+export const CommentInput = () => {
   const { user, openAuthModal } = useAuth();
   const { addComment } = useComments();
   const [content, setContent] = useState("");
@@ -40,7 +40,6 @@ export const CommentsInput = () => {
       endContent={
         <Button
           size="sm"
-          className="rounded-full"
           color="primary"
           isIconOnly
           startContent={<FaTurnUp />}
