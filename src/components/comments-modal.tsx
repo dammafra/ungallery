@@ -6,6 +6,7 @@ import {
   ModalHeader,
   ModalProps,
 } from "@nextui-org/modal";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { CommentsInput } from "./comments-input";
 import { CommentsList } from "./comments-list";
@@ -15,6 +16,8 @@ export const CommentsModal = ({
   onClose,
   ...props
 }: Omit<ModalProps, "children" | "onSubmit">) => {
+  const { forward } = useRouter();
+
   useEffect(() => {
     const preventHistoryBack = (event: PopStateEvent) => {
       if (!isOpen) {
@@ -22,7 +25,7 @@ export const CommentsModal = ({
       }
 
       event.preventDefault();
-      window.history.forward();
+      forward();
       onClose && onClose();
     };
 
@@ -62,9 +65,8 @@ export const CommentsModal = ({
       size="full"
       classNames={{
         wrapper: "flex flex-col justify-end",
-        backdrop: "lg:hidden",
       }}
-      className="w-screen h-[532px] lg:hidden !rounded-t-large"
+      className="w-screen h-[532px] !rounded-t-large"
       {...props}
     >
       <ModalContent>
