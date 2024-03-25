@@ -1,11 +1,6 @@
-import { Badge } from "@nextui-org/badge";
-import { Button } from "@nextui-org/button";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
-import { useComments } from "@providers/comments/use-comments";
-import { useEffect, useState } from "react";
-import { FaComment } from "react-icons/fa6";
-import { CommentsInput } from "./comments-input";
+import { CommentInput } from "./comment-input";
 import { CommentsList } from "./comments-list";
 import { CommentsModal } from "./comments-modal";
 import { Credits, CreditsProps } from "./credits";
@@ -22,42 +17,13 @@ export const DetailSidebar = ({
   description,
   creditsProps,
 }: DetailSidebarProps) => {
-  const { comments } = useComments();
-  const [showCommentsModal, setShowCommentsModal] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      // tailwind lg breakpoint
-      if (window.innerWidth > 1024) setShowCommentsModal(false);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <>
       <Card className="sticky bottom-0 z-10 w-full h-fit self-center lg:w-[28rem] animate-fade-up lg:animate-fade-left rounded-b-none lg:rounded-b-large">
         <CardHeader className="flex-col items-start gap-4">
           <div className="flex flex-row justify-between w-full gap-2">
             <Credits {...creditsProps} />
-            <Badge
-              size="sm"
-              color="default"
-              content={comments.length}
-              isInvisible={!comments.length}
-            >
-              <Button
-                isIconOnly
-                variant="flat"
-                startContent={<FaComment />}
-                className="flex lg:hidden rounded-full"
-                onClick={() => setShowCommentsModal(true)}
-              />
-            </Badge>
+            <CommentsModal />
             <FavouriteButton photoId={id} />
           </div>
           {description && (
@@ -72,14 +38,9 @@ export const DetailSidebar = ({
         <Divider className="hidden lg:flex" />
 
         <CardFooter className="hidden lg:flex">
-          <CommentsInput />
+          <CommentInput />
         </CardFooter>
       </Card>
-
-      <CommentsModal
-        isOpen={showCommentsModal}
-        onClose={() => setShowCommentsModal(false)}
-      />
     </>
   );
 };
