@@ -1,9 +1,10 @@
 import { Skeleton } from "@nextui-org/skeleton";
-import { useSearch } from "@providers/search/use-search";
 
-export const GalleryLoader = () => {
-  const { perPage } = useSearch();
+export interface GalleryLoaderProps {
+  perPage?: number;
+}
 
+export const GalleryLoader = ({ perPage = 12 }: GalleryLoaderProps) => {
   return (
     <>
       {Array(perPage)

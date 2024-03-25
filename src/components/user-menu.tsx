@@ -7,6 +7,7 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@nextui-org/dropdown";
+import { Link } from "@nextui-org/link";
 import { User } from "@nextui-org/user";
 import { useAuth } from "@providers/auth/use-auth";
 import { useFavourites } from "@providers/favourites/use-favourites";
@@ -63,6 +64,7 @@ export const UserMenu = () => {
         <DropdownItem
           isReadOnly
           showDivider
+          textValue="sign in button"
           className={clsx(
             "data-[hover=true]:bg-transparent",
             !!user ? "hidden" : "flex"
@@ -72,9 +74,10 @@ export const UserMenu = () => {
         </DropdownItem>
 
         <DropdownItem
+          as={Link}
           href="/favourites"
           endContent={<Chip>{favourites.length}</Chip>}
-          className={clsx(!!user ? "flex" : "hidden")}
+          className={clsx("text-foreground", !!user ? "flex" : "hidden")}
         >
           Favourites
         </DropdownItem>

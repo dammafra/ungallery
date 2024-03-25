@@ -1,6 +1,8 @@
 import { Button } from "@nextui-org/button";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
+import { Badge } from "@nextui-org/react";
+import { useComments } from "@providers/comments/use-comments";
 import { useState } from "react";
 import { FaComment } from "react-icons/fa6";
 import { CommentsInput } from "./comments-input";
@@ -20,6 +22,7 @@ export const DetailSidebar = ({
   description,
   creditsProps,
 }: DetailSidebarProps) => {
+  const { comments } = useComments();
   const [showCommentsModal, setShowCommentsModal] = useState(false);
 
   return (
@@ -28,13 +31,20 @@ export const DetailSidebar = ({
         <CardHeader className="flex-col items-start gap-4">
           <div className="flex flex-row justify-between w-full gap-2">
             <Credits {...creditsProps} />
-            <Button
-              isIconOnly
-              variant="flat"
-              startContent={<FaComment />}
-              className="flex lg:hidden rounded-full"
-              onClick={() => setShowCommentsModal(true)}
-            />
+            <Badge
+              size="sm"
+              color="default"
+              content={comments.length}
+              isInvisible={!comments.length}
+            >
+              <Button
+                isIconOnly
+                variant="flat"
+                startContent={<FaComment />}
+                className="flex lg:hidden rounded-full"
+                onClick={() => setShowCommentsModal(true)}
+              />
+            </Badge>
             <FavouriteButton photoId={id} />
           </div>
           {description && (
