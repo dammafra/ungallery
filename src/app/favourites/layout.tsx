@@ -3,7 +3,7 @@
 import { FavouritesNavbar } from "@components/favourites-navbar";
 import { PropsWithChildren } from "react";
 
-// TODO: refactor with gallery/layout?
+// TODO: refactor with gallery/search/layout?
 export default function Layout({ children }: PropsWithChildren) {
   return (
     <div className="relative flex flex-col">

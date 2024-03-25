@@ -13,7 +13,7 @@ import { useAuth } from "@providers/auth/use-auth";
 import { useFavourites } from "@providers/favourites/use-favourites";
 import { authService } from "@services/auth.service";
 import clsx from "clsx";
-import { FaRightFromBracket } from "react-icons/fa6";
+import { FaMagnifyingGlass, FaRightFromBracket } from "react-icons/fa6";
 import { AuthButton } from "./auth-button";
 import { ThemeSwitch } from "./theme-switch";
 
@@ -75,8 +75,19 @@ export const UserMenu = () => {
 
         <DropdownItem
           as={Link}
+          href="/gallery/search"
+          endContent={
+            <FaMagnifyingGlass className="text-default-foreground" size={14} />
+          }
+          className="text-foreground"
+        >
+          New Search
+        </DropdownItem>
+
+        <DropdownItem
+          as={Link}
           href="/favourites"
-          endContent={<Chip>{favourites.length}</Chip>}
+          endContent={<Chip size="sm">{favourites.length}</Chip>}
           className={clsx("text-foreground", !!user ? "flex" : "hidden")}
         >
           Favourites

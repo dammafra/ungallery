@@ -38,13 +38,9 @@ export const CommentInput = () => {
       enterKeyHint="done"
       onSubmit={console.log}
       endContent={
-        <Button
-          size="sm"
-          color="primary"
-          isIconOnly
-          startContent={<FaTurnUp />}
-          onPress={submitHandler}
-        />
+        <Button size="sm" color="primary" isIconOnly onPress={submitHandler}>
+          <FaTurnUp />
+        </Button>
       }
     />
   );

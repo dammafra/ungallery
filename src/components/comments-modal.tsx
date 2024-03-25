@@ -62,10 +62,11 @@ export const CommentsModal = () => {
         <Button
           isIconOnly
           variant="flat"
-          startContent={<FaRegComment size={22} />}
           className="flex lg:hidden rounded-full"
           onClick={() => setShowCommentsModal(true)}
-        />
+        >
+          <FaRegComment size={22} />
+        </Button>
       </Badge>
 
       <Modal
